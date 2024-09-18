@@ -67,7 +67,7 @@ class DataCollector:
                 furniture=furniture,
                 max_env_steps=sim_config["scripted_timeout"][furniture]
                 if scripted
-                else 3000,
+                else 500,
                 headless=headless,
                 num_envs=1,  # Only support 1 for now.
                 manual_done=False if scripted else True,

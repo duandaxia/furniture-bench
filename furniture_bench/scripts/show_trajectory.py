@@ -54,6 +54,7 @@ def main():
 
     if args.save_video:
         path = datetime.now().strftime("%Y-%m-%d-%H:%M:%S") + ".avi"
+        #size = data["observations"][i]["color_image1"].size()
         size = (224 * 2, 224)
         out = cv2.VideoWriter(
             path, cv2.VideoWriter_fourcc("M", "J", "P", "G"), 10, size, True
@@ -111,6 +112,9 @@ def main():
             if "color_image1" in data["observations"][0]:
                 color_image1 = data["observations"][i]["color_image1"]
                 color_image2 = data["observations"][i]["color_image2"]
+                size = data["observations"][0]["color_image1"]
+                print("image size: " + size)
+
                 if args.show_raw_images:
                     org_color_image1 = color_images1[i]
                     org_color_image2 = color_images2[i]

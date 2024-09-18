@@ -70,7 +70,7 @@ class FurnitureSimEnv(gym.Env):
         high_random_idx: int = 0,
         save_camera_input: bool = False,
         record: bool = False,
-        max_env_steps: int = 3000,
+        max_env_steps: int = 500,
         act_rot_repr: str = "quat",
         action_type: str = "delta",  # "delta" or "pos"
         ctrl_mode: str = "osc",
