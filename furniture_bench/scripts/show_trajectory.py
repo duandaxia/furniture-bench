@@ -42,7 +42,10 @@ def main():
         "--show-raw-images", action="store_true", help="Show original images."
     )
     parser.add_argument(
-        "--speed-up", type=int, default=5, help="Speed up the video by this factor."
+        "--speed-up", type=int, default=3, help="Speed up the video by this factor."
+    )
+    parser.add_argument(
+        "--show-bottleneck", action="store_true", help="Pause at bottleneck regions."
     )
 
     np.set_printoptions(suppress=True)
@@ -197,6 +200,16 @@ def main():
             out.write(color_img)
 
         sleep_time = 0.1 / args.speed_up
+        if args.show_bottleneck:
+            for key, value in data.items():
+                print(key)
+            
+            print(data["actions"][i])
+
+            if data["augment_states"][i]==1:
+                sleep_time = 1.0 / args.speed_up
+                print("Reach bottleneck regions")
+
         time.sleep(sleep_time)
         k = cv2.waitKey(1)
         if k == 27:  # wait for ESC key to exit
